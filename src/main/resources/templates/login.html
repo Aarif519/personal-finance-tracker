@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FinTrack - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container" style="max-width: 400px; margin-top: 100px;">
+    <div class="card shadow">
+        <div class="card-body p-4">
+            <h3 class="text-center mb-4">FinTrack</h3>
+
+            <div th:if="${param.error}" class="alert alert-danger">Invalid email or password</div>
+            <div th:if="${param.logout}" class="alert alert-success">Logged out successfully</div>
+            <div th:if="${param.registered}" class="alert alert-success">Registered! Please login</div>
+
+            <form th:action="@{/login}" method="post">
+                <input type="email" name="username" class="form-control mb-3" placeholder="Email" required>
+                <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+                <button class="btn btn-primary w-100">Login</button>
+            </form>
+
+            <p class="text-center mt-3 mb-0">New user? <a th:href="@{/register}">Register</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
